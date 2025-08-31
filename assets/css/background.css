@@ -1,0 +1,211 @@
+/* Full-screen background image styles */
+body {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    position: relative;
+}
+
+/* Background image overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/backgrounds/taxi-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8; /* Adjust for desired darkness */
+    z-index: -2;
+}
+
+/* Fallback gradient if image fails to load */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 204, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: -1;
+}
+
+/* Container adjustments for overlay text */
+.container {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    color: #fff;
+}
+
+/* Language selector */
+.language-selector {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+/* When language selector is inside the topbar */
+.language-selector.inline {
+    position: static;
+    top: auto;
+    left: auto;
+}
+
+.language-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 204, 0, 0.8);
+    color: #000;
+}
+
+.language-btn.active {
+    border-color: #ffcc00;
+    background: rgba(255, 204, 0, 0.6);
+    color: #000;
+}
+
+/* Hero section with direct text on background */
+.hero-section {
+    text-align: center;
+    padding: 160px 20px 60px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+
+.hero-section h1 {
+    font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+    margin-bottom: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.hero-section .subtitle {
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-weight: 400;
+    color: #f2f2f2;
+}
+
+.hero-cta { display: flex; gap: 12px; justify-content: center; margin-top: 10px; }
+.hero-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px; }
+.hero-chips li { padding: 8px 12px; border-radius: 999px; background: rgba(0,0,0,0.35); color: #fff; border: 1px solid rgba(255,255,255,0.15); font-size: 0.9rem; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section { padding: 120px 16px 40px; }
+    
+    .language-selector {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .language-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .container { margin: 10px; }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section .subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Taxi-themed accent colors */
+.taxi-yellow {
+    color: #ffcc00;
+}
+
+/* Create a placeholder background if no image is available */
+.placeholder-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c3e50, #ffcc00);
+    z-index: -2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15rem;
+    color: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.placeholder-background::before {
+    content: '🚕';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.1;
+    animation: float 20s infinite linear;
+}
+
+.placeholder-background::after {
+    content: '🚖';
+    position: absolute;
+    font-size: 15rem;
+    opacity: 0.1;
+    left: 60%;
+    top: 60%;
+    animation: float 15s infinite linear reverse;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, 50px) rotate(5deg);
+    }
+    50% {
+        transform: translate(50px, 100px) rotate(0deg);
+    }
+    75% {
+        transform: translate(-50px, 50px) rotate(-5deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
