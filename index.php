@@ -239,5 +239,6 @@ $images = $imagesStmt->fetchAll();
 
     <!-- JavaScript -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/background-slideshow.js"></script>
 </body>
 </html>

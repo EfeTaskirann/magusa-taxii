@@ -144,6 +144,107 @@ body {
     align-items: start;
 }
 
+/* Hero section with direct text on background */
+.hero-section {
+    text-align: center;
+    padding: 180px 20px 80px;
+    color: white;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.hero-inner { 
+    max-width: 1100px; 
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 5.2vw, 4.8rem);
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.8px;
+    text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(255, 204, 0, 0.3);
+    animation: heroGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    from {
+        text-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.9),
+            0 0 30px rgba(255, 204, 0, 0.3);
+    }
+    to {
+        text-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.9),
+            0 0 40px rgba(255, 204, 0, 0.5);
+    }
+}
+
+.hero-section .subtitle {
+    font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+    max-width: 800px;
+    margin: 0 auto 25px;
+    font-weight: 400;
+    color: #f8f8f8;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-cta { 
+    display: flex; 
+    gap: 15px; 
+    justify-content: center; 
+    margin-top: 15px; 
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-chips { 
+    list-style: none; 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 12px; 
+    justify-content: center; 
+    margin-top: 25px; 
+    animation: fadeInUp 1s ease-out 0.7s both;
+}
+
+.hero-chips li { 
+    padding: 10px 16px; 
+    border-radius: 999px; 
+    background: rgba(0,0,0,0.4); 
+    backdrop-filter: blur(8px);
+    color: #fff; 
+    border: 1px solid rgba(255,255,255,0.2); 
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.hero-chips li:hover {
+    background: rgba(255,204,0,0.2);
+    border-color: rgba(255,204,0,0.5);
+    transform: translateY(-2px);
+}
+
 /* Slider Section */
 .slider-section {
     position: relative;
@@ -210,12 +311,30 @@ body {
 }
 
 .blog-content {
-    background: rgba(0, 0, 0, 0.45); /* subtle dark glass to ensure readability on image */
+    background: rgba(0, 0, 0, 0.65); /* Enhanced glass effect for better readability */
+    backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.3),
+        0 2px 8px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
     height: fit-content;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle glow effect */
+.blog-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,204,0,0.6), transparent);
 }
 
 .blog-content h2 {
@@ -308,9 +427,12 @@ body {
 .footer {
     margin-top: 40px;
     padding: 40px 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
-    border-radius: 16px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
 .footer-content {
@@ -420,6 +542,25 @@ body {
         flex-direction: column;
         text-align: center;
     }
+
+    .hero-section {
+        padding: 120px 16px 40px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .hero-chips {
+        gap: 8px;
+    }
+    
+    .hero-chips li {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -448,6 +589,18 @@ body {
 
     .blog-content h2 {
         font-size: 1.3rem;
+    }
+
+    .hero-section {
+        padding: 100px 12px 30px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section .subtitle {
+        font-size: 1rem;
     }
 }
 
